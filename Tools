@@ -1,0 +1,14 @@
+The following is a list of the tools that the group uses for its activities:
+
+cmd.exe: 	The native command line prompt utility.
+PowerShell.exe:	A native command line tool used to start a Windows PowerShell session in a Command Prompt window.
+PsExec.exe:	A tool included in the PsTools suite used to execute processes remotely. Rhysida actors heavily leveraged this tool for lateral movement and remote execution.
+mstsc.exe:	A native tool that establishes an RDP connection to a host.
+PuTTY.exe:	Rhysida actors have been observed creating Secure Shell (SSH) PuTTy connections for lateral movement. In one example, analysis of PowerShell console host history for a compromised user account revealed Rhysida actors leveraged PuTTy to remotely connect to systems via SSH [T1021.004].
+PortStarter: 	A back door script written in Go that provides functionality for modifying firewall settings and opening ports to pre-configured command and control (C2) servers.[1]
+secretsdump: 	A script used to extract credentials and other confidential information from a system. Rhysida actors have been observed using this for NTDS dumping [T1003.003] in various instances.
+ntdsutil.exe:	A standard Windows tool used to interact with the NTDS database. Rhysida actors used this tool to extract and dump the NTDS.dit database from the domain controller containing hashes for all Active Directory (AD) users.	Note: It is strongly recommended that organizations conduct domain-wide password resets and double Kerberos TGT password resets if any indication is found that the NTDS.dit file was compromised.
+AnyDesk: 	A common software that can be maliciously used by threat actors to obtain remote access and maintain persistence [T1219]. AnyDesk also supports remote file transfer.
+wevtutil.exe: 	A standard Windows Event Utility tool used to view event logs. Rhysida actors used this tool to clear a significant number of Windows event logs, including system, application, and security logs [T1070.001].
+PowerView:	A PowerShell tool used to gain situational awareness of Windows domains. Review of PowerShell event logs identified Rhysida actors using this tool to conduct additional reconnaissance-based commands and harvest credentials.
+
